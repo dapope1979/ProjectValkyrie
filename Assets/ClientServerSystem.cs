@@ -1,7 +1,7 @@
 using UnityEngine;
 using System.Collections;
 
-public class NewBehaviourScript : MonoBehaviour {
+public class ClientServerSystem : MonoBehaviour {
 	public string connectionIP = "127.0.0.1";
 	public int connectionPort = 25001;
 	

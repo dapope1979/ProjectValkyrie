@@ -1,7 +1,7 @@
 using UnityEngine;
 using System.Collections;
 
-public class sphere : MonoBehaviour {
+public class PlayerShip : MonoBehaviour {
 	bool moving = false;
 	// Use this for initialization
 	void Start () {
@@ -11,7 +11,7 @@ public class sphere : MonoBehaviour {
 	// Update is called once per frame
 	void Update () {
 		if (moving) {
-			Vector3 moveDir = new Vector3(1, 0, 0);
+			Vector3 moveDir = new Vector3(0, 1, 0);
 			float speed = 5;
 	    	transform.Translate(speed * moveDir * Time.deltaTime);
 		}

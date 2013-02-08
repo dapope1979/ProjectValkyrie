@@ -1,11 +1,10 @@
 using UnityEngine;
 using System.Collections;
 
-public class ClientStuffy : MonoBehaviour {
-	public sphere ship;
+public class Helm : MonoBehaviour {
+	public PlayerShip ship;
 	// Use this for initialization
-	void Start () {
-	
+	void Start () {	
 	}
 	
 	// Update is called once per frame
