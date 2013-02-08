@@ -179,3 +179,5 @@ Temp
 *.sln
 
 build
+nwf_data
+*.exe
