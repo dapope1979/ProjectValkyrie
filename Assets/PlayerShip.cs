@@ -11,7 +11,7 @@ public class PlayerShip : MonoBehaviour {
 	// Update is called once per frame
 	void Update () {
 		if (moving) {
-			Vector3 moveDir = new Vector3(0, 1, 0);
+			Vector3 moveDir = new Vector3(0, 0, 1);
 			float speed = 5;
 	    	transform.Translate(speed * moveDir * Time.deltaTime);
 		}
