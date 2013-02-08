@@ -1,8 +1,9 @@
 ﻿<Properties>
   <MonoDevelop.Ide.Workspace ActiveConfiguration="Debug" />
-  <MonoDevelop.Ide.Workbench ActiveDocument="Assets\PlayerShip.cs">
+  <MonoDevelop.Ide.Workbench ActiveDocument="Assets\PlayerShip.js">
     <Files>
-      <File FileName="Assets\PlayerShip.cs" Line="13" Column="16" />
+      <File FileName="Assets\PlayerShip.js" Line="1" Column="1" />
+      <File FileName="Assets\ClientServerSystem.js" Line="11" Column="33" />
     </Files>
   </MonoDevelop.Ide.Workbench>
   <MonoDevelop.Ide.DebuggingService.Breakpoints>
