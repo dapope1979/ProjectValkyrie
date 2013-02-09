@@ -10,7 +10,7 @@ function Start () {
 function Update () {
 	if (Network.isClient && Input.anyKeyDown)
 	{
-		Debug.Log ("sending");
 	    ship.networkView.RPC("ToggleMoving", RPCMode.Others);
 	}
 }
+

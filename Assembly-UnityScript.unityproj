@@ -44,6 +44,7 @@
 	</Reference>
   </ItemGroup>
   <ItemGroup>
+     <Compile Include="Assets\ClientPlayer.js" />
      <Compile Include="Assets\ClientServerSystem.js" />
      <Compile Include="Assets\Helm.js" />
      <Compile Include="Assets\PlayerShip.js" />
