@@ -23,7 +23,16 @@ function Update () {
 	if (Network.peerType == NetworkPeerType.Server) {
 		var go:GameObject = GameObject.Find("CommandRelay"); 
 		var bm:CommandRelay = go.GetComponent(CommandRelay);
-		go.networkView.RPC("fromShipToRelay", RPCMode.AllBuffered);
+		
+		
+		var state = {
+			"moving": moving,
+			"helmOccupied": helmOccupied
+		};
+		
+		var jsonString = JSONUtils.ObjectToJSON(state);
+		
+		go.networkView.RPC("fromShipToRelay", RPCMode.AllBuffered, jsonString);
 	}
 }
 

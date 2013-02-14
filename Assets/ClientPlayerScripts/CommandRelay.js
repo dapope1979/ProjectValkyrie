@@ -28,6 +28,7 @@ function Fire() {
 	}
 }
 
+// not implemented in PlayerShip yet
 function Abandon() {
 	if (Network.peerType == NetworkPeerType.Client) {
 		ship.networkView.RPC("Abandon", RPCMode.Server);
@@ -39,6 +40,8 @@ function Abandon() {
 
 // read the JSON and store in variables
 @RPC
-function fromShipToRelay() {
-	//Debug.Log("Getting ship info " +Time.timeSinceLevelLoad);
+function fromShipToRelay(jsonString:String) {
+	var state = JSONUtils.ParseJSON( jsonString );	
+	// append gameTime to force Unity's console to treat like a new log statement
+	Debug.Log("Getting ship info " +state["moving"] +" " +state["helmOccupied"] +" " +Time.timeSinceLevelLoad);
 }
