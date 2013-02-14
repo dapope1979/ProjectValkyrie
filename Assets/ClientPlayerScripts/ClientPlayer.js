@@ -50,3 +50,12 @@ function OnGUI()
 	}
 }
 
+function OnPlayerDisconnected(player: NetworkPlayer) {
+	var relayObject : GameObject = transform.Find("CommandRelay").gameObject;
+	var relayScript : CommandRelay = relayObject.GetComponent(CommandRelay);
+	relayScript.ship = ship;
+    Debug.Log("Clean up after clientplayer ");
+    // abandon my posts
+    relayScript.Abandon();
+}
+

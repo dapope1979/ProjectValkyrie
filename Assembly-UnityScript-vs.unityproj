@@ -44,12 +44,12 @@
 	</Reference>
   </ItemGroup>
   <ItemGroup>
-     <Compile Include="Assets\ClientPlayer.js" />
+     <Compile Include="Assets\ClientPlayerScripts\ClientPlayer.js" />
+     <Compile Include="Assets\ClientPlayerScripts\CommandRelay.js" />
+     <Compile Include="Assets\ClientPlayerScripts\Helm.js" />
+     <Compile Include="Assets\ClientPlayerScripts\Weapons.js" />
      <Compile Include="Assets\ClientServerSystem.js" />
-     <Compile Include="Assets\CommandRelay.js" />
-     <Compile Include="Assets\Helm.js" />
      <Compile Include="Assets\PlayerShip.js" />
-     <Compile Include="Assets\Weapons.js" />
  <Reference Include="Assembly-UnityScript-firstpass">
  <HintPath>Library\ScriptAssemblies\Assembly-UnityScript-firstpass.dll</HintPath>
  </Reference>

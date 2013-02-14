@@ -3,7 +3,7 @@
 var commandRelay: CommandRelay;
 
 function Start () {
-	Debug.Log("Took the helm");
+	Debug.Log("Took weapons");
 }
 	
 // Update is called once per frame

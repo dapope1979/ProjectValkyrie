@@ -28,8 +28,17 @@ function Fire() {
 	}
 }
 
-// proof of concept for receiving ship info from server
+function Abandon() {
+	if (Network.peerType == NetworkPeerType.Client) {
+		ship.networkView.RPC("Abandon", RPCMode.Server);
+	}
+	else {
+    	ship.Abandon();
+	}
+}
+
+// read the JSON and store in variables
 @RPC
 function fromShipToRelay() {
-	Debug.Log("Getting ship info");
+	//Debug.Log("Getting ship info " +Time.timeSinceLevelLoad);
 }

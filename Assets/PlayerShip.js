@@ -17,6 +17,9 @@ function Update () {
 	}
 	
 	// proof of concept for sending ship data to clients
+	// I am thinking we should serialize to a JSON object and pass as an argument
+	// clients can then pull the info relevant to their stations
+	// will mostly be used for things like text display and whether or not a station is filled
 	if (Network.peerType == NetworkPeerType.Server) {
 		var go:GameObject = GameObject.Find("CommandRelay"); 
 		var bm:CommandRelay = go.GetComponent(CommandRelay);
@@ -32,4 +35,9 @@ function ToggleMoving() {
 @RPC
 function Fire() {
 	Debug.Log("Firing");
+}
+
+@RPC
+function Abandon() {
+	Debug.Log("Abandoning");
 }
