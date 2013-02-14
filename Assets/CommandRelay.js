@@ -7,7 +7,7 @@ function Start () {
 }
 
 function Update () {
-
+	//Debug.Log(ship.moving);
 }
 
 function ToggleMoving() {
@@ -26,4 +26,10 @@ function Fire() {
 	else {
     	ship.Fire();
 	}
+}
+
+// proof of concept for receiving ship info from server
+@RPC
+function fromShipToRelay() {
+	Debug.Log("Getting ship info");
 }

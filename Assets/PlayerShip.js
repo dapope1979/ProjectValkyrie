@@ -15,6 +15,13 @@ function Update () {
 		var speed = 5;
     	transform.Translate(speed * moveDir * Time.deltaTime);
 	}
+	
+	// proof of concept for sending ship data to clients
+	if (Network.peerType == NetworkPeerType.Server) {
+		var go:GameObject = GameObject.Find("CommandRelay"); 
+		var bm:CommandRelay = go.GetComponent(CommandRelay);
+		go.networkView.RPC("fromShipToRelay", RPCMode.AllBuffered);
+	}
 }
 
 @RPC
