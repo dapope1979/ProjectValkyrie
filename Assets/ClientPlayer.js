@@ -7,7 +7,23 @@ function Start () {
 }
 
 function Update () {
+		var cameraObject : GameObject = transform.Find("Camera").gameObject;
+		var mainCameraObject : GameObject = transform.Find("MainCamera").gameObject;
+	if (Input.GetKeyDown ("c"))
+	{
 
+
+		cameraObject.SetActive(false);	
+
+		mainCameraObject.SetActive(true);
+	}
+	if (Input.GetKeyDown ("v"))
+	{
+		//var cameraObject : GameObject = transform.Find("Camera").gameObject;
+		cameraObject.SetActive(true);	
+		//var mainCameraObject : GameObject = transform.Find("MainCamera").gameObject;
+		mainCameraObject.SetActive(false);
+	}
 }
 
 function OnGUI()
