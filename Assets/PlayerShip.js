@@ -16,7 +16,8 @@ function Update () {
 	}
 }
 
-@RPC
+
 function ToggleMoving() {
+	Debug.Log("Yes sir");
 	moving = !moving;
 }
