@@ -48,6 +48,7 @@
      <Compile Include="Assets\ClientServerSystem.js" />
      <Compile Include="Assets\Helm.js" />
      <Compile Include="Assets\PlayerShip.js" />
+     <Compile Include="Assets\Weapons.js" />
   </ItemGroup>
   <ItemGroup>
     <ProjectReference Include="Assembly-CSharp-firstpass.csproj">

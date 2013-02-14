@@ -16,8 +16,12 @@ function Update () {
 	}
 }
 
-
+@RPC
 function ToggleMoving() {
-	Debug.Log("Yes sir");
 	moving = !moving;
+}
+
+@RPC
+function Fire() {
+	Debug.Log("Firing");
 }

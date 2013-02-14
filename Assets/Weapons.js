@@ -8,14 +8,13 @@ function Start () {
 	
 // Update is called once per frame
 function Update () {
-	if (Input.GetKeyDown ("space"))
+	if (Input.GetKeyDown ("f"))
 	{
 		if (Network.peerType == NetworkPeerType.Client) {
-			ship.networkView.RPC("ToggleMoving", RPCMode.Server);
+			ship.networkView.RPC("Fire", RPCMode.Server);
 		}
 		else {
-	    	ship.ToggleMoving();
+	    	ship.Fire();
     	}
 	}
 }
-

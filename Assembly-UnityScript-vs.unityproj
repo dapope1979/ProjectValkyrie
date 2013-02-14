@@ -48,6 +48,7 @@
      <Compile Include="Assets\ClientServerSystem.js" />
      <Compile Include="Assets\Helm.js" />
      <Compile Include="Assets\PlayerShip.js" />
+     <Compile Include="Assets\Weapons.js" />
  <Reference Include="Assembly-UnityScript-firstpass">
  <HintPath>Library\ScriptAssemblies\Assembly-UnityScript-firstpass.dll</HintPath>
  </Reference>
