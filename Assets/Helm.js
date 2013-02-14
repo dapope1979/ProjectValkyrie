@@ -1,21 +1,15 @@
 #pragma strict
 
-var ship:PlayerShip;
+var commandRelay:CommandRelay;
 
 function Start () {
-	Debug.Log("Took the helm");
 }
 	
 // Update is called once per frame
 function Update () {
 	if (Input.GetKeyDown ("space"))
 	{
-		if (Network.peerType == NetworkPeerType.Client) {
-			ship.networkView.RPC("ToggleMoving", RPCMode.Server);
-		}
-		else {
-	    	ship.ToggleMoving();
-    	}
+		commandRelay.ToggleMoving();		
 	}
 }
 

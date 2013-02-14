@@ -46,6 +46,7 @@
   <ItemGroup>
      <Compile Include="Assets\ClientPlayer.js" />
      <Compile Include="Assets\ClientServerSystem.js" />
+     <Compile Include="Assets\CommandRelay.js" />
      <Compile Include="Assets\Helm.js" />
      <Compile Include="Assets\PlayerShip.js" />
      <Compile Include="Assets\Weapons.js" />

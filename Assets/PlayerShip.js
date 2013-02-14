@@ -1,6 +1,7 @@
 #pragma strict
 
 var moving = false;
+var helmOccupied = false;
 
 	// Use this for initialization
 function Start () {

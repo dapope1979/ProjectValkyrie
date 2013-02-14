@@ -1,6 +1,6 @@
 #pragma strict
 
-var ship:PlayerShip;
+var commandRelay: CommandRelay;
 
 function Start () {
 	Debug.Log("Took the helm");
@@ -10,11 +10,6 @@ function Start () {
 function Update () {
 	if (Input.GetKeyDown ("f"))
 	{
-		if (Network.peerType == NetworkPeerType.Client) {
-			ship.networkView.RPC("Fire", RPCMode.Server);
-		}
-		else {
-	    	ship.Fire();
-    	}
+		commandRelay.Fire();
 	}
 }
