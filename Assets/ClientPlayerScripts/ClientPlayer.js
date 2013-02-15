@@ -33,13 +33,14 @@ function OnGUI()
 		var relayScript : CommandRelay = relayObject.GetComponent(CommandRelay);
 		relayScript.ship = ship;
 		
-		
-		
-		if (GUI.Button(new Rect(10, 30, 100, 20), "Take the Helm")) {
-			var helmObject : GameObject = transform.Find("Helm").gameObject;
-			var helmScript : Helm = helmObject.GetComponent(Helm);
-			helmObject.SetActive(true);
-			helmScript.commandRelay = relayScript;
+		if (!relayScript.IsHelmOccupied()) {
+			if (GUI.Button(new Rect(10, 30, 100, 20), "Take the Helm")) {
+				relayScript.TakeTheHelm();
+				var helmObject : GameObject = transform.Find("Helm").gameObject;
+				var helmScript : Helm = helmObject.GetComponent(Helm);
+				helmObject.SetActive(true);
+				helmScript.commandRelay = relayScript;
+			}
 		}
 		if (GUI.Button(new Rect(10, 60, 100, 20), "Take Weapons")) {
 			var weaponsObject : GameObject = transform.Find("Weapons").gameObject;
@@ -56,6 +57,11 @@ function OnPlayerDisconnected(player: NetworkPlayer) {
 	relayScript.ship = ship;
     Debug.Log("Clean up after clientplayer ");
     // abandon my posts
-    relayScript.Abandon();
+    var helmObject : GameObject = transform.Find("Helm").gameObject;
+    // can't rely on helmObject.active since the object is going away.
+    Debug.Log("Helm: " +helmObject.active);
+	if (helmObject.active) {
+		relayScript.AbandonHelm();
+	}    
 }
 

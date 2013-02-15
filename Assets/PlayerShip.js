@@ -47,6 +47,11 @@ function Fire() {
 }
 
 @RPC
+function SetHelmOccupied(occupied:boolean) {
+	helmOccupied = occupied;
+}
+
+@RPC
 function Abandon() {
 	Debug.Log("Abandoning");
 }

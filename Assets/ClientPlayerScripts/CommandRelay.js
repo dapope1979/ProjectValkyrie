@@ -1,6 +1,9 @@
 #pragma strict
 
+
+
 var ship:PlayerShip;
+var shipState:Hashtable;
 
 function Start () {
 
@@ -28,20 +31,33 @@ function Fire() {
 	}
 }
 
-// not implemented in PlayerShip yet
-function Abandon() {
+function IsHelmOccupied() {
+	return shipState["helmOccupied"];
+}
+
+function TakeTheHelm() {
 	if (Network.peerType == NetworkPeerType.Client) {
-		ship.networkView.RPC("Abandon", RPCMode.Server);
+		ship.networkView.RPC("SetHelmOccupied", RPCMode.Server, true);
 	}
 	else {
-    	ship.Abandon();
+    	ship.SetHelmOccupied(true);
+	}
+}
+
+// not implemented in PlayerShip yet
+function AbandonHelm() {
+	if (Network.peerType == NetworkPeerType.Client) {
+		ship.networkView.RPC("SetHelmOccupied", RPCMode.Server, false);
+	}
+	else {
+    	ship.SetHelmOccupied(false);
 	}
 }
 
 // read the JSON and store in variables
 @RPC
 function fromShipToRelay(jsonString:String) {
-	var state = JSONUtils.ParseJSON( jsonString );	
+	shipState = JSONUtils.ParseJSON( jsonString );	
 	// append gameTime to force Unity's console to treat like a new log statement
-	Debug.Log("Getting ship info " +state["moving"] +" " +state["helmOccupied"] +" " +Time.timeSinceLevelLoad);
+	//Debug.Log("Getting ship info " +shipState["moving"] +" " +shipState["helmOccupied"] +" " +Time.timeSinceLevelLoad);
 }
