@@ -44,6 +44,7 @@
 	</Reference>
   </ItemGroup>
   <ItemGroup>
+<<<<<<< HEAD
      <Compile Include="Assets\ClientPlayerScripts\ClientPlayer.js" />
      <Compile Include="Assets\ClientPlayerScripts\CommandRelay.js" />
      <Compile Include="Assets\ClientPlayerScripts\Helm.js" />
@@ -51,6 +52,12 @@
      <Compile Include="Assets\ClientServerSystem.js" />
      <Compile Include="Assets\JSONUtils.js" />
      <Compile Include="Assets\PlayerShip.js" />
+=======
+     <Compile Include="Assets\Game\ClientMain.js" />
+     <Compile Include="Assets\Game\PlayerInfo.js" />
+     <Compile Include="Assets\Server\ServerMain.js" />
+     <Compile Include="Assets\Server\ServerPlayerManager.js" />
+>>>>>>> Server/Client rewrite
  <Reference Include="Assembly-UnityScript-firstpass">
  <HintPath>Library\ScriptAssemblies\Assembly-UnityScript-firstpass.dll</HintPath>
  </Reference>
