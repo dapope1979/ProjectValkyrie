@@ -16,6 +16,9 @@ function OnGUI ()
     if (Network.peerType == NetworkPeerType.Disconnected)
     {   
         GUILayout.Label("Not connected to server.");
+		GUI.SetNextControlName ("ipAddressTextField");
+		remoteIP = GUILayout.TextField (remoteIP);
+
         if (GUILayout.Button ("Connect to server"))
             connectToServer();                
     }
