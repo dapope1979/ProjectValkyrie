@@ -45,6 +45,7 @@
   </ItemGroup>
   <ItemGroup>
 <<<<<<< HEAD
+<<<<<<< HEAD
      <Compile Include="Assets\ClientPlayerScripts\ClientPlayer.js" />
      <Compile Include="Assets\ClientPlayerScripts\CommandRelay.js" />
      <Compile Include="Assets\ClientPlayerScripts\Helm.js" />
@@ -55,6 +56,8 @@
 =======
      <Compile Include="Assets\Game\ClientMain.js" />
      <Compile Include="Assets\Game\PlayerInfo.js" />
+=======
+>>>>>>> Rewrote in C#
      <Compile Include="Assets\Server\ServerMain.js" />
      <Compile Include="Assets\Server\ServerPlayerManager.js" />
 >>>>>>> Server/Client rewrite
