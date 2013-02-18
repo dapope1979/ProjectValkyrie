@@ -46,7 +46,6 @@
   <ItemGroup>
      <Compile Include="Assets\ClientServerSystem.js" />
      <Compile Include="Assets\JSONUtils.js" />
-     <None Include="Assets\Standard Assets\Skyboxes\_skybox info.txt" />
  <Reference Include="Assembly-UnityScript-firstpass">
  <HintPath>Library\ScriptAssemblies\Assembly-UnityScript-firstpass.dll</HintPath>
  </Reference>
