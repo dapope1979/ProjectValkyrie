@@ -87,7 +87,7 @@ public class ServerMain : MonoBehaviour {
 		spm.deletePlayer(player);
 	}
 
-		[RPC]
+	[RPC]
 	void LoadLevel(string level, int levelPrefix) {
 		 Debug.Log("Loading level " + level + " with prefix " + levelPrefix);
 		 lastLevelPrefix = levelPrefix;

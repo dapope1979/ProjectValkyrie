@@ -30,4 +30,10 @@ public class ServerPlayerManager : MonoBehaviour {
 		go.transform.position = go.transform.position + Vector3.right*horizontal;
 		go.transform.position = go.transform.position + Vector3.forward*vertical;
 	}
+
+	[RPC]
+	void thrust(NetworkPlayer player) {
+		// work out the  command scheme, station assignments
+		Debug.Log("Thrust ship");
+	}
 }
