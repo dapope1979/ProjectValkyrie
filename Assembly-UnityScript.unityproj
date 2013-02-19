@@ -44,7 +44,12 @@
 	</Reference>
   </ItemGroup>
   <ItemGroup>
+<<<<<<< HEAD
      <Compile Include="Assets\JSONUtils.js" />
+=======
+     <Compile Include="Assets\Player.js" />
+     <None Include="Assets\Standard Assets\Skyboxes\_skybox info.txt" />
+>>>>>>> Loading levels
   </ItemGroup>
   <ItemGroup>
     <ProjectReference Include="Assembly-CSharp-firstpass.csproj">

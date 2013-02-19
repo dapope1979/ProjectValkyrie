@@ -5,6 +5,11 @@ public class ClientMain : MonoBehaviour {
 
 	string remoteIP = "127.0.0.1";
 	int remotePort = 25000;
+	int lastLevelPrefix = 1;
+
+	void Awake () {
+	 	DontDestroyOnLoad(this);
+	}
 	 
 	void connectToServer() {
 		Network.Connect(remoteIP, remotePort);  
@@ -42,7 +47,11 @@ public class ClientMain : MonoBehaviour {
 				disconnectFromServer();
 			}
 			Application.LoadLevel ("Home");
-			
+			Destroy(this);
+			GameObject[] gos = GameObject.FindGameObjectsWithTag("GameController");
+			foreach(GameObject go in gos) {
+				Destroy(go);
+			}
 		}
 	}
 
@@ -70,5 +79,30 @@ public class ClientMain : MonoBehaviour {
 
 	[RPC]
 	void handlePlayerInput(NetworkPlayer player, float vertical, float horizontal) {
+	}
+
+	[RPC]
+	void LoadLevel(string level, int levelPrefix) {
+		 Debug.Log("Loading level " + level + " with prefix " + levelPrefix);
+		 lastLevelPrefix = levelPrefix;
+		 // There is no reason to send any more data over the network on the default 
+		 // channel,
+		 // because we are about to load the level, because all those objects will get deleted 
+		 // anyway
+		 Network.SetSendingEnabled(0, false); 
+		 // We need to stop receiving because first the level must be loaded.
+		 // Once the level is loaded, RPC's and other state update attached to objects in the 
+		 // level are allowed to fire
+		 Network.isMessageQueueRunning = false;
+		   
+		 // All network views loaded from a level will get a prefix into their NetworkViewID.
+		 // This will prevent old updates from clients leaking into a newly created scene.
+		 Network.SetLevelPrefix(levelPrefix);
+		 Application.LoadLevel(level);
+		 // Allow receiving data again
+		 Network.isMessageQueueRunning = true;
+		 // Now the level has been loaded and we can start sending out data
+		 Network.SetSendingEnabled(0, true);
+		
 	}
 }

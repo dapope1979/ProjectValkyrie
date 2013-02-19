@@ -44,10 +44,14 @@
 	</Reference>
   </ItemGroup>
   <ItemGroup>
+<<<<<<< HEAD
      <Compile Include="Assets\JSONUtils.js" />
 <<<<<<< HEAD
  <Reference Include="Assembly-UnityScript-firstpass">
 =======
+=======
+     <Compile Include="Assets\Player.js" />
+>>>>>>> Loading levels
      <None Include="Assets\Standard Assets\Skyboxes\_skybox info.txt" />
  <Reference Include="Library\ScriptAssemblies\Assembly-UnityScript-firstpass">
 >>>>>>> Removed remaining JS scripts.

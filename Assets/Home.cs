@@ -18,7 +18,7 @@ public class Home : MonoBehaviour {
 			Application.LoadLevel ("Server");
 		}
 		if (GUI.Button(new Rect(120,20,80,20), "Client")) {
-			Application.LoadLevel ("testLevel");
+			Application.LoadLevel ("client");
 		}
 	}	
 }

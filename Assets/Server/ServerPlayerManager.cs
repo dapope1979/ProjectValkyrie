@@ -4,6 +4,10 @@ using System.Collections;
 public class ServerPlayerManager : MonoBehaviour {
 
 	Hashtable players = new Hashtable();
+
+	void Awake () {
+	 	DontDestroyOnLoad(this);
+	}
 	 
 	public void spawnPlayer(NetworkPlayer player) {
 		PlayerInfo ply = (PlayerInfo) GameObject.FindObjectOfType(typeof(PlayerInfo));

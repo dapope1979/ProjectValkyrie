@@ -6,6 +6,7 @@ public class ServerMain : MonoBehaviour {
 
 	int listenPort = 25000;
 	int maxClients = 5;
+	int lastLevelPrefix = 0;
 	 
 	void startServer() {
 		Network.InitializeServer(maxClients, listenPort, false);    
@@ -31,6 +32,10 @@ public class ServerMain : MonoBehaviour {
 				GUILayout.Label("Network server is running.");          
 				showServerInformation();    
 				showClientInformation();
+				if (GUILayout.Button("Start Game")) {
+					// Load level with incremented level prefix (for view IDs)
+   					networkView.RPC( "LoadLevel", RPCMode.AllBuffered, "testLevel", lastLevelPrefix + 1);
+				}
 			}
 			if (GUILayout.Button ("Stop Server"))
 			{             
@@ -43,6 +48,15 @@ public class ServerMain : MonoBehaviour {
 				stopServer();
 			}
 			Application.LoadLevel ("Home");
+			GameObject[] gos = GameObject.FindGameObjectsWithTag("GameController");
+			foreach(GameObject go in gos) {
+				Destroy(go);
+			}
+			GameObject[] players = GameObject.FindGameObjectsWithTag("Player");
+			foreach(GameObject go in players) {
+				Destroy(go);
+			}
+			Destroy(this);
 		}
 	}
 	 
@@ -60,6 +74,7 @@ public class ServerMain : MonoBehaviour {
 	//[script RequireComponent(ServerPlayerManager)]
 	private ServerPlayerManager spm;
 	void Awake() {
+	 	DontDestroyOnLoad(this);
 		spm = (ServerPlayerManager) gameObject.GetComponent(typeof(ServerPlayerManager));
 	}
 	 
@@ -70,5 +85,30 @@ public class ServerMain : MonoBehaviour {
 	void OnPlayerDisconnected(NetworkPlayer player) {
 		Debug.Log("Player disconnected");
 		spm.deletePlayer(player);
+	}
+
+		[RPC]
+	void LoadLevel(string level, int levelPrefix) {
+		 Debug.Log("Loading level " + level + " with prefix " + levelPrefix);
+		 lastLevelPrefix = levelPrefix;
+		 // There is no reason to send any more data over the network on the default 
+		 // channel,
+		 // because we are about to load the level, because all those objects will get deleted 
+		 // anyway
+		 Network.SetSendingEnabled(0, false); 
+		 // We need to stop receiving because first the level must be loaded.
+		 // Once the level is loaded, RPC's and other state update attached to objects in the 
+		 // level are allowed to fire
+		 Network.isMessageQueueRunning = false;
+		   
+		 // All network views loaded from a level will get a prefix into their NetworkViewID.
+		 // This will prevent old updates from clients leaking into a newly created scene.
+		 Network.SetLevelPrefix(levelPrefix);
+		 Application.LoadLevel(level);
+		 // Allow receiving data again
+		 Network.isMessageQueueRunning = true;
+		 // Now the level has been loaded and we can start sending out data
+		 Network.SetSendingEnabled(0, true);
+		
 	}
 }
