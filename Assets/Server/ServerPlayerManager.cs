@@ -4,6 +4,7 @@ using System.Collections;
 public class ServerPlayerManager : MonoBehaviour {
 
 	Hashtable players = new Hashtable();
+	ValkyrieShip ship;
 
 	void Awake () {
 	 	DontDestroyOnLoad(this);
@@ -23,6 +24,10 @@ public class ServerPlayerManager : MonoBehaviour {
 		players.Remove(player); 
 	}
 
+	void OnLevelWasLoaded(int level) {
+		ship = (ValkyrieShip) GameObject.FindObjectOfType(typeof(ValkyrieShip));
+	}
+
 	[RPC]
 	void handlePlayerInput(NetworkPlayer player, float vertical, float horizontal) {
 		Debug.Log("Handling input on the server");
@@ -35,5 +40,6 @@ public class ServerPlayerManager : MonoBehaviour {
 	void thrust(NetworkPlayer player) {
 		// work out the  command scheme, station assignments
 		Debug.Log("Thrust ship");
+		ship.transform.position += Vector3.up * 1;
 	}
 }

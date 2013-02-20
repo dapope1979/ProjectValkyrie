@@ -33,6 +33,12 @@ public class ServerMain : MonoBehaviour {
 				showServerInformation();    
 				showClientInformation();
 				if (GUILayout.Button("Start Game")) {
+					// kill off all the RPC's before loading the level
+				    Network.SetSendingEnabled(0, false);    
+				    Network.isMessageQueueRunning = false;
+				    Network.SetLevelPrefix(lastLevelPrefix);
+				    Network.isMessageQueueRunning = true;
+				    Network.SetSendingEnabled(0, true);
 					// Load level with incremented level prefix (for view IDs)
    					networkView.RPC( "LoadLevel", RPCMode.AllBuffered, "testLevel", lastLevelPrefix + 1);
 				}
