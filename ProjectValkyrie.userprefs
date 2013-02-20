@@ -1,6 +1,12 @@
 ﻿<Properties>
   <MonoDevelop.Ide.Workspace ActiveConfiguration="Debug" />
-  <MonoDevelop.Ide.Workbench />
+  <MonoDevelop.Ide.Workbench ActiveDocument="Assets\Server\ServerPlayerManager.cs">
+    <Files>
+      <File FileName="Assets\Game\ClientMain.cs" Line="60" Column="66" />
+      <File FileName="Assets\Server\ServerPlayerManager.cs" Line="50" Column="82" />
+      <File FileName="Assets\Game\ValkyrieShip.cs" Line="6" Column="2" />
+    </Files>
+  </MonoDevelop.Ide.Workbench>
   <MonoDevelop.Ide.DebuggingService.Breakpoints>
     <BreakpointStore />
   </MonoDevelop.Ide.DebuggingService.Breakpoints>

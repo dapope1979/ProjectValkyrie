@@ -26,6 +26,8 @@ public class ServerPlayerManager : MonoBehaviour {
 		Network.DestroyPlayerObjects(player);
 		players.Remove(player);
 		
+		// I think I would prefer to move this into the ship
+		// ship.RemovePlayer
 		if (ship.helmPlayer == player) {
 			ship.helmPlayer=ServerPlayerManager.emptyPlayer;	
 		}
@@ -43,12 +45,11 @@ public class ServerPlayerManager : MonoBehaviour {
 		go.transform.position = go.transform.position + Vector3.forward*vertical;
 	}
 
-
 	// Map in input from the player and relay to the ship object
 	// use interaction with the ship object to occupy stations and check if occupied
+	// work out how to load stations player side and then how to layout this portion
 	[RPC]
 	void thrust(NetworkPlayer player) {
-		// work out the  command scheme, station assignments
 		//Debug.Log("Thrust ship");
 		ship.Thrust(player);
 	}
