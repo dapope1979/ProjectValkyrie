@@ -5,6 +5,7 @@ public class ValkyrieShip : MonoBehaviour {
 	
 	
 	public NetworkPlayer helmPlayer;
+	public GameObject helmPlayerPrefab;
 	
 	// Use this for initialization
 	void Start () {
@@ -13,7 +14,7 @@ public class ValkyrieShip : MonoBehaviour {
 	
 	// Update is called once per frame
 	void Update () {
-		Debug.Log (helmPlayer.ToString());
+		//Debug.Log (helmPlayer.ToString());
 	}
 
 	// most of these are going to be called in by serverPlayerManager

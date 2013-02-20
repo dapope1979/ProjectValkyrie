@@ -39,7 +39,7 @@ public class ServerPlayerManager : MonoBehaviour {
 
 	[RPC]
 	void handlePlayerInput(NetworkPlayer player, float vertical, float horizontal) {
-		Debug.Log("Handling input on the server");
+		//Debug.Log("Handling input on the server");
 		GameObject go = (GameObject) players[player];
 		go.transform.position = go.transform.position + Vector3.right*horizontal;
 		go.transform.position = go.transform.position + Vector3.forward*vertical;
@@ -50,7 +50,7 @@ public class ServerPlayerManager : MonoBehaviour {
 	// work out how to load stations player side and then how to layout this portion
 	[RPC]
 	void thrust(NetworkPlayer player) {
-		//Debug.Log("Thrust ship");
+		Debug.Log("Thrust ship");
 		ship.Thrust(player);
 	}
 	
@@ -58,6 +58,12 @@ public class ServerPlayerManager : MonoBehaviour {
 	void TakeHelm(NetworkPlayer player) {
 		Debug.Log ("Client claimed helm");
 		ship.helmPlayer = player;
+		GameObject go = (GameObject) players[player];
+		Destroy (go);
+		Network.Destroy(go);		
+		go = (GameObject) Network.Instantiate(ship.helmPlayerPrefab, Vector3.up*3, Quaternion.identity, 0);
+		players[player] = go;
+		
 	}
 
 	
