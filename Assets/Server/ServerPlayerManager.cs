@@ -2,7 +2,9 @@ using UnityEngine;
 using System.Collections;
 
 public class ServerPlayerManager : MonoBehaviour {
-
+	
+	public static NetworkPlayer emptyPlayer;
+	
 	Hashtable players = new Hashtable();
 	ValkyrieShip ship;
 
@@ -20,8 +22,13 @@ public class ServerPlayerManager : MonoBehaviour {
 		Debug.Log("Deleting player");
 		GameObject go = (GameObject) players[player];
 		Network.RemoveRPCs(go.networkView.viewID); 
-		Network.Destroy(go); 
-		players.Remove(player); 
+		Network.Destroy(go);
+		Network.DestroyPlayerObjects(player);
+		players.Remove(player);
+		
+		if (ship.helmPlayer == player) {
+			ship.helmPlayer=ServerPlayerManager.emptyPlayer;	
+		}
 	}
 
 	void OnLevelWasLoaded(int level) {
@@ -45,4 +52,12 @@ public class ServerPlayerManager : MonoBehaviour {
 		//Debug.Log("Thrust ship");
 		ship.Thrust(player);
 	}
+	
+	[RPC]
+	void TakeHelm(NetworkPlayer player) {
+		Debug.Log ("Client claimed helm");
+		ship.helmPlayer = player;
+	}
+
+	
 }

@@ -53,6 +53,14 @@ public class ClientMain : MonoBehaviour {
 				Destroy(go);
 			}
 		}
+		
+		ValkyrieShip ship = (ValkyrieShip) GameObject.FindObjectOfType(typeof(ValkyrieShip));
+		if ((ship != null) && (ship.helmPlayer == ServerPlayerManager.emptyPlayer) ) {
+			if (GUILayout.Button("Take Helm")) {
+				networkView.RPC("TakeHelm", RPCMode.Server, Network.player);				
+			}
+		}
+	    
 	}
 
 	void OnDisconnectedFromServer (NetworkDisconnection info) {
@@ -60,6 +68,7 @@ public class ClientMain : MonoBehaviour {
 		foreach(GameObject go in gos) {
 			Destroy(go);
 		}
+		
 	}
 
 	void Update() {
@@ -85,6 +94,12 @@ public class ClientMain : MonoBehaviour {
 	void handlePlayerInput(NetworkPlayer player, float vertical, float horizontal) {
 	}
 
+	[RPC]
+	void TakeHelm(NetworkPlayer player) {
+	}
+	
+
+	
 	[RPC]
 	void Thrust(NetworkPlayer player) {
 	}
