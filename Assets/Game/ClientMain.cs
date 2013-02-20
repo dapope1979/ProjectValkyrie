@@ -54,16 +54,7 @@ public class ClientMain : MonoBehaviour {
 			}
 		}
 		
-		ValkyrieShip ship = (ValkyrieShip) GameObject.FindObjectOfType(typeof(ValkyrieShip));
-		if ((ship != null) && (ship.helmPlayer == ServerPlayerManager.emptyPlayer) ) {
-			if (GUILayout.Button("Take Helm")) {
-				networkView.RPC("TakeHelm", RPCMode.Server, Network.player);
-				GameObject[] gos = GameObject.FindGameObjectsWithTag("Player");
-				foreach(GameObject go in gos) {
-					Destroy(go);
-				}
-			}
-		}
+
 	    
 	}
 

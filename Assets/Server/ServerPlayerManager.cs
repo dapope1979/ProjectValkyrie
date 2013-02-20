@@ -55,6 +55,21 @@ public class ServerPlayerManager : MonoBehaviour {
 	}
 	
 	[RPC]
+	void LeaveHelm(NetworkPlayer player) {
+		Debug.Log("clearing helm");
+		if (ship.helmPlayer == player) {
+			ship.helmPlayer=ServerPlayerManager.emptyPlayer;	
+		}
+		GameObject go = (GameObject) players[player];
+		Destroy (go);
+		Network.Destroy(go);
+		PlayerInfo ply = (PlayerInfo) GameObject.FindObjectOfType(typeof(PlayerInfo));
+		go = (GameObject) Network.Instantiate(ply.playerPrefab, Vector3.up*3, Quaternion.identity, 0);
+		players[player] = go;
+		
+	}
+	
+	[RPC]
 	void TakeHelm(NetworkPlayer player) {
 		Debug.Log ("Client claimed helm");
 		ship.helmPlayer = player;
@@ -62,8 +77,7 @@ public class ServerPlayerManager : MonoBehaviour {
 		Destroy (go);
 		Network.Destroy(go);		
 		go = (GameObject) Network.Instantiate(ship.helmPlayerPrefab, Vector3.up*3, Quaternion.identity, 0);
-		players[player] = go;
-		
+		players[player] = go;		
 	}
 
 	
