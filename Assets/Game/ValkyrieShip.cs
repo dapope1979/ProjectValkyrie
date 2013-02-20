@@ -13,8 +13,9 @@ public class ValkyrieShip : MonoBehaviour {
 	
 	}
 
-	[RPC]
-	void Thrust(NetworkPlayer player) {
-		Debug.Log("Thrust ship");
+	// most of these are going to be called in by serverPlayerManager
+	// use to handle transformations and track ship statistics
+	public void Thrust(NetworkPlayer player) {
+		transform.position += Vector3.up * 1;
 	}
 }

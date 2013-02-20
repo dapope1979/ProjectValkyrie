@@ -36,10 +36,13 @@ public class ServerPlayerManager : MonoBehaviour {
 		go.transform.position = go.transform.position + Vector3.forward*vertical;
 	}
 
+
+	// Map in input from the player and relay to the ship object
+	// use interaction with the ship object to occupy stations and check if occupied
 	[RPC]
 	void thrust(NetworkPlayer player) {
 		// work out the  command scheme, station assignments
-		Debug.Log("Thrust ship");
-		ship.transform.position += Vector3.up * 1;
+		//Debug.Log("Thrust ship");
+		ship.Thrust(player);
 	}
 }
